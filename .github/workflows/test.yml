@@ -30,9 +30,12 @@ jobs:
         node-version: '18'
 
     - name: Install Frontend Dependencies
-      run: |
-        npm install
+  run: |
+    npm install
+    npm install vitest
 
-    - name: Run Frontend Tests
-      run: |
-        npm test
+- name: Fix permission (IMPORTANT)
+  run: chmod +x node_modules/.bin/vitest
+
+- name: Run Frontend Tests
+  run: npx vitest
